@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const doListRouter = require('./routes/doList.router')
 
 const app = express();
 
@@ -7,10 +8,12 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
+// ROUTES
+app.use('/toDoList', doListRouter)
+
 // Serve "static assets" (html, css, client-side js)
 // from the server/public folder
 app.use(express.static('server/public'));
-
 
 // Start express
 const PORT = 5000;
