@@ -6,7 +6,6 @@ function readyNow() {
  $('#output').on('click', '.btn-delete', toDoListDelete)
 
 getToDoList();
-toDoListDelete();
 
 };
 
@@ -16,7 +15,7 @@ function submitBtn() {
     
     let toDo = {
         to_do: $('#input').val(),
-        notes: $('#notes').val()
+        //notes: $('#notes').val()
     }
 postToDoList(toDo);
 
@@ -61,16 +60,16 @@ function postToDoList(toDo) {
 function rendertoDoList(response) {
     console.log('List has been rendered');
 
-    for (let i = 0; i < response.length; i+= 1) {
+    for (let i = 0; i < response.length; i += 1) {
         $('#output').append(`
         <tr data-id=${response[i].id}>
           <td>${response[i].to_do}</td>
-          <td>${response[i].notes}</td>
+          
           <td><button class="btn-done" data-id=${response[i].id}>DONE</button></td>
           <td><button class="btn-delete" data-id=${response[i].id}>DELETE</button></td>
           
           </tr>
-        `)
+        `) // <td>${response[i].notes}</td>
       } // end of for loop
     }; // end of function
 
