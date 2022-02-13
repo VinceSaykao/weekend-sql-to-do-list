@@ -81,7 +81,6 @@ $.ajax({
     url: `/toDoList/${doId}`
 }).then(function(response) {
     console.log('Deleted!', response);
-    rendertoDoList();
 }).catch(function(error) {
     console.log('Error Deleteing', error);
 })
