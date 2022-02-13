@@ -33,16 +33,16 @@ router.post('/', (req,res)=>{
     })
 });
 
-router.put('/:id', (req,res) => {
+router.put('/:id/:notes', (req,res) => {
   let noteToUpdate = req.body;
   console.log(noteToUpdate);
   let sqlText = `
   UPDATE "to_do_table"
-  SET "notes" = 'hello world'
+  SET "notes" = '$('.note-input').val()'
   WHERE "id" = $1;
   `;
 
-  let sqlValues = [noteToUpdate];
+  let sqlValues = [noteToUpdate.notes];
 
 pool.query(sqlText, sqlValues)
 .then(results => {
