@@ -2,12 +2,21 @@ $(document).ready(readyNow)
 
 function readyNow() {
  console.log('hello');
- $('.grid-container').on('click', '#btn-submit', submitBtn)
- $('#output').on('click', '.btn-delete', toDoListDelete)
-
+ $('.grid-container').on('click', '#btn-submit', submitBtn);
+ $('#output').on('click', '.btn-delete', toDoListDelete);
+$('#output').on('click','.btn-done', toDoListDone);
 getToDoList();
 
 };
+
+function toDoListDone() {
+    console.log('Done is pressed');
+
+
+
+}; // end of function
+
+
 
 function submitBtn() {
     console.log('clicked');
@@ -64,10 +73,9 @@ function rendertoDoList(response) {
         $('#output').append(`
         <tr data-id=${response[i].id}>
           <td>${response[i].to_do}</td>
-          
           <td><button class="btn-done" data-id=${response[i].id}>DONE</button></td>
           <td><button class="btn-delete" data-id=${response[i].id}>DELETE</button></td>
-          
+          <td><input placeholder="wack"></td>
           </tr>
         `) // <td>${response[i].notes}</td>
       } // end of for loop

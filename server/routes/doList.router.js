@@ -25,7 +25,7 @@ router.post('/', (req,res)=>{
     let toDo = req.body;
     let queryText = `INSERT INTO "to_do_table" ("to_do")
     VALUES ($1);`; // ,"notes"
-    pool.query(queryText, [toDo.to_do]) // ,toDo.notes
+    pool.query(queryText, [toDo.to_do]) // ,toDo.notes]
     .then(result=>{
         res.sendStatus(201);
     }).catch(error=>{
