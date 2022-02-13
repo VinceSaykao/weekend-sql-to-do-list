@@ -6,8 +6,32 @@ function readyNow() {
  $('#output').on('click', '.btn-delete', toDoListDelete);
 $('#output').on('click','.btn-done', toDoListDone);
 getToDoList()
+$('#output').on('click','.enter-notes',enterNotesDo);
 
 };
+
+function enterNotesDo() {
+  noob = $('.note-input').val();
+  console.log('clicked');
+  console.log(noob)
+  let marked = noob;
+  let id = $(this).closest('tr').data().id
+  console.log(id, marked);
+  $.ajax({
+    method: 'PUT',
+    url: `/toDoList/${id}`,
+    data: {
+      marked: marked
+    }
+  }).then(function(response) {
+      getToDoList();
+  }).catch(function(err) {
+    console.log(err);
+  })
+
+
+
+}; // end of function
 
 
 function submitBtn() {
@@ -19,6 +43,7 @@ function submitBtn() {
   
   let toDo = {
       to_do: $('#input').val(),
+
       //notes: $('#notes').val()
   }
   postToDoList(toDo);
@@ -31,7 +56,7 @@ function submitBtn() {
 
 function toDoListDone() {
   console.log('done');
-      let marked = $(this).text().toLowerCase();
+      let marked = $(this).text();
       let id = $(this).closest('tr').data().id
       $(this).css("background-color","yellow");
       console.log(id, marked);
@@ -76,6 +101,7 @@ function postToDoList(toDo) {
         console.log('Response from server', response);
         
         getToDoList();
+
       }).catch(function(error){
         console.log('Error in POST', error);
       })
@@ -91,9 +117,9 @@ function rendertoDoList(response) {
           <td>${response[i].to_do}</td>
           <td><button class="btn-done" data-id=${response[i].id}>DONE</button></td>
           <td><button class="btn-delete" data-id=${response[i].id}>DELETE</button></td>
-          <td><textarea rows = "5" cols = "" name = "description">
+          <td id="text-area"><textarea class="note-input" rows = "5" cols = "" name = "description">
           Write Something...
-       </textarea> <button id="enter-notes">Enter Notes</button
+       </textarea><button class="enter-notes">Enter Notes</button>
           </td>
           </tr>
         `) // <td>${response[i].notes}</td>

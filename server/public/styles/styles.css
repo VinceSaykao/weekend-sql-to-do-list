@@ -236,11 +236,15 @@ border: 10px solid white;
                0 0 160px #03bcf4;
 }
 
+.note-input {
+  background-color: green;
+}
 
+.enter-notes {
+  width: 182px;
+  color:green;
 
-#enter-notes {
-  -webkit-transform:rotate(90deg);
-  position: absolute;
+  
 }
 
 
