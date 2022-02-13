@@ -188,7 +188,9 @@ p {
 }
 
 
-
+.btn-done, .btn-delete {
+  background-color: green;
+ }
 .btn-delete {
   margin-right: 30px;
 
@@ -200,19 +202,19 @@ p {
 }
 
 tr {
-  
-  row-gap: 10px;
-  color: red;
+  color: greenyellow;
 }
 
 th,td {
-  border: 2px solid red;
+  border: 2px solid white;
+}
+th {
+  font-size: 30px;
+  text-align: center;
+  width: 200px;
+
 }
 
-#header-table {
-  color: red;
-  background-color: orange;
-}
 
 .btn-submit {
   margin-left: 613px;
@@ -232,8 +234,13 @@ border: 10px solid white;
                0 0 40px #03bcf4,
                0 0 80px #03bcf4,
                0 0 160px #03bcf4;
+}
 
 
+
+#enter-notes {
+  -webkit-transform:rotate(90deg);
+  position: absolute;
 }
 
 

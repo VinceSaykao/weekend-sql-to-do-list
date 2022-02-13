@@ -5,7 +5,7 @@ function readyNow() {
  $('.grid-container').on('click', '.btn-submit', submitBtn);
  $('#output').on('click', '.btn-delete', toDoListDelete);
 $('#output').on('click','.btn-done', toDoListDone);
-getToDoList();
+getToDoList()
 
 };
 
@@ -14,11 +14,15 @@ function submitBtn() {
   console.log('clicked');
   // postToDoList
   
+ 
+  
+  
   let toDo = {
       to_do: $('#input').val(),
       //notes: $('#notes').val()
   }
-postToDoList(toDo);
+  postToDoList(toDo);
+  $('#input').val('');
 
 }; // end of function
 
@@ -29,7 +33,7 @@ function toDoListDone() {
   console.log('done');
       let marked = $(this).text().toLowerCase();
       let id = $(this).closest('tr').data().id
-      $(this).addClass("btnChange")
+      $(this).css("background-color","yellow");
       console.log(id, marked);
       $.ajax({
         method: 'PUT',
@@ -56,6 +60,7 @@ function toDoListDone() {
     }).catch (function(error){
       console.log('Lmao, that sucks...')
     })
+    
     }; // end of function
     
 
@@ -86,7 +91,10 @@ function rendertoDoList(response) {
           <td>${response[i].to_do}</td>
           <td><button class="btn-done" data-id=${response[i].id}>DONE</button></td>
           <td><button class="btn-delete" data-id=${response[i].id}>DELETE</button></td>
-          <td>Notes: <input placeholder="wack"></td>
+          <td><textarea rows = "5" cols = "" name = "description">
+          Write Something...
+       </textarea> <button id="enter-notes">Enter Notes</button
+          </td>
           </tr>
         `) // <td>${response[i].notes}</td>
       } // end of for loop
