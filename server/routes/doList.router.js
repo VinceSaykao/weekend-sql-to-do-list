@@ -22,8 +22,7 @@ router.get('/', (req, res) => {
 // POST
 router.post('/', (req,res)=>{
     console.log('req.body', req.body);
-    let toDo = req.body
-    
+    let toDo = req.body;
     let queryText = `INSERT INTO "to_do_table" ("to_do","notes")
     VALUES ($1,$2);`;
     pool.query(queryText, [toDo.to_do,toDo.notes])
@@ -32,7 +31,7 @@ router.post('/', (req,res)=>{
     }).catch(error=>{
         res.sendStatus(500)
     })
-})
+});
 
 // PUT
 

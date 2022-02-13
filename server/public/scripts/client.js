@@ -2,7 +2,7 @@ $(document).ready(readyNow)
 
 function readyNow() {
  console.log('hello');
- $('.grid-container').on('click', submitBtn)
+ $('.grid-container').on('click', '#btn-submit', submitBtn)
 
  getToDoList();
 
@@ -10,7 +10,13 @@ function readyNow() {
 
 function submitBtn() {
     console.log('clicked');
-    $('#output').append()
+    // postToDoList
+    
+    let toDo = {
+        to_do: $('#input').val(),
+        notes: $('#notes').val()
+    }
+postToDoList(toDo);
 
 }; // end of function
 
@@ -18,6 +24,7 @@ function submitBtn() {
 
 function getToDoList() {
     console.log( 'in toDoList');
+    $('#output').empty();
 $.ajax({
     method: 'GET',
     url: "/toDoList"
@@ -29,8 +36,29 @@ $.ajax({
 })
 }; // end of function
 
+
+
+function postToDoList(toDo) {
+    console.log('Post works');
+
+    $.ajax({
+        type: 'POST',
+        url: '/toDoList',
+        data: toDo
+      }).then(function(response){
+        console.log('Response from server', response);
+        
+        getToDoList();
+      }).catch(function(error){
+        console.log('Error in POST', error);
+      })
+    }; // end of function
+
+
+
 function rendertoDoList(response) {
     console.log('List has been rendered');
+
     for (let i = 0; i < response.length; i++) {
         $('#output').append(`
         <tr data-id=${response[i].id}>
