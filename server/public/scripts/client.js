@@ -9,58 +9,55 @@ getToDoList();
 
 };
 
-function toDoListDone() {
-    console.log('done');
-        let marked = $(this).text().toLowerCase();
-        let id = $(this).closest('tr').data().id
-        console.log(id, marked);
-        $.ajax({
-          method: 'PUT',
-          url: `/toDoList/${id}`,
-          data: {
-            marked: marked
-          }
-        }).then(function(response) {
-            getToDoList();
-        }).catch(function(err) {
-          console.log(err);
-        })
-      }; // end of function
-      
-
-
-
-
-
 
 function submitBtn() {
-    console.log('clicked');
-    // postToDoList
-    
-    let toDo = {
-        to_do: $('#input').val(),
-        //notes: $('#notes').val()
-    }
+  console.log('clicked');
+  // postToDoList
+  
+  let toDo = {
+      to_do: $('#input').val(),
+      //notes: $('#notes').val()
+  }
 postToDoList(toDo);
 
 }; // end of function
 
 // git push --set-upstream origin feature-client
 
-function getToDoList() {
-    console.log( 'in toDoList');
-    $('#output').empty();
-$.ajax({
-    method: 'GET',
-    url: "/toDoList"
-}).then(function(response){
-    console.log('response', response);
-    rendertoDoList(response); // calls rendertoDoList
-}).catch (function(error){
-    console.log('Lmao, that sucks...')
-})
-}; // end of function
 
+function toDoListDone() {
+  console.log('done');
+      let marked = $(this).text().toLowerCase();
+      let id = $(this).closest('tr').data().id
+      $(this).addClass("btnChange")
+      console.log(id, marked);
+      $.ajax({
+        method: 'PUT',
+        url: `/toDoList/${id}`,
+        data: {
+          marked: marked
+        }
+      }).then(function(response) {
+          getToDoList();
+      }).catch(function(err) {
+        console.log(err);
+      })
+    }; // end of function
+
+    function getToDoList() {
+      console.log( 'in toDoList');
+      $('#output').empty();
+    $.ajax({
+      method: 'GET',
+      url: "/toDoList"
+    }).then(function(response){
+      console.log('response', response);
+      rendertoDoList(response); // calls rendertoDoList
+    }).catch (function(error){
+      console.log('Lmao, that sucks...')
+    })
+    }; // end of function
+    
 
 
 function postToDoList(toDo) {
@@ -83,7 +80,6 @@ function postToDoList(toDo) {
 
 function rendertoDoList(response) {
     console.log('List has been rendered');
-
     for (let i = 0; i < response.length; i += 1) {
         $('#output').append(`
         <tr data-id=${response[i].id}>
@@ -111,5 +107,7 @@ getToDoList();
 
 }; // end of function 
     
+
+
 
 
