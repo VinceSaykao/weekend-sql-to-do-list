@@ -3,8 +3,10 @@ $(document).ready(readyNow)
 function readyNow() {
  console.log('hello');
  $('.grid-container').on('click', '#btn-submit', submitBtn)
+ $('#output').on('click', '.btn-delete', toDoListDelete)
 
- getToDoList();
+getToDoList();
+toDoListDelete();
 
 };
 
@@ -59,7 +61,7 @@ function postToDoList(toDo) {
 function rendertoDoList(response) {
     console.log('List has been rendered');
 
-    for (let i = 0; i < response.length; i++) {
+    for (let i = 0; i < response.length; i+= 1) {
         $('#output').append(`
         <tr data-id=${response[i].id}>
           <td>${response[i].to_do}</td>
@@ -73,7 +75,8 @@ function rendertoDoList(response) {
     }; // end of function
 
 function toDoListDelete() {
-    let doId = $(this).clostest('tr').data().id;
+    console.log('deleted');
+    let doId = $(this).closest('tr').data().id;
 $.ajax({
     method: 'DELETE',
     url: `/toDoList/${doId}`

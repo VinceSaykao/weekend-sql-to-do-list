@@ -37,5 +37,19 @@ router.post('/', (req,res)=>{
 
 
 // DELETE
+router.delete('/:id', (req,res) => {
+    let reqId = req.params.id;
+    console.log('DELETE id, reqId');
+    let queryText = 'DELETE FROM "to_do_table" WHERE "id" = $1;'
+    pool.query(queryText, [reqId])
+    .then((result) => {
+      console.log('To-Do deleted');
+      res.sendStatus(200);
+    })
+    .catch((error) => {
+      console.log('Error making database query', queryText, error);
+      res.sendStatus(500);
+    })
+  }); // end of router.delete
 
 module.exports = router;
