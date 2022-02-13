@@ -151,6 +151,16 @@ p {
   z-index: 1;
 }
 
+tr {
+  color: red;
+  text-align: center;
+  align-items: center;
+}
+
+#output {
+  align-items: center;
+
+}
 
 
 

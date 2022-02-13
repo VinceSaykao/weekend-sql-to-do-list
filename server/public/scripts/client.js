@@ -64,11 +64,28 @@ function rendertoDoList(response) {
         <tr data-id=${response[i].id}>
           <td>${response[i].to_do}</td>
           <td>${response[i].notes}</td>
-          <button class="btn-delete" data-id=${response[i].id}>DELETE</button>
-          <button class="btn-done" data-id=${response[i].id}>DONE</button>
-          </td>>
+          <td><button class="btn-done" data-id=${response[i].id}>DONE</button></td>
+          <td><button class="btn-delete" data-id=${response[i].id}>DELETE</button></td>
+          
           </tr>
         `)
       } // end of for loop
     }; // end of function
+
+function toDoListDelete() {
+    let doId = $(this).clostest('tr').data().id;
+$.ajax({
+    method: 'DELETE',
+    url: `/toDoList/${doId}`
+}).then(function(response) {
+    console.log('Deleted!', response);
+    rendertoDoList();
+}).catch(function(error) {
+    console.log('Error Deleteing', error);
+})
+getToDoList();
+
+}; // end of function 
     
+
+
