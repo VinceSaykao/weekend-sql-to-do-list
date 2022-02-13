@@ -10,11 +10,26 @@ getToDoList();
 };
 
 function toDoListDone() {
-    console.log('Done is pressed');
+    console.log('done');
+        let marked = $(this).text().toLowerCase();
+        let id = $(this).closest('tr').data().id
+        console.log(id, marked);
+        $.ajax({
+          method: 'PUT',
+          url: `/toDoList/${id}`,
+          data: {
+            marked: marked
+          }
+        }).then(function(response) {
+            getToDoList();
+        }).catch(function(err) {
+          console.log(err);
+        })
+      }; // end of function
+      
 
 
 
-}; // end of function
 
 
 

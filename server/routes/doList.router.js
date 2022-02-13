@@ -34,6 +34,26 @@ router.post('/', (req,res)=>{
 });
 
 // PUT
+router.put('/:id', (req,res) => {
+    let listToUpdate =req.params.id;
+    console.log(listToUpdate);
+    console.log(req.body);
+    let sqlText = `
+    UPDATE "to_do_table"
+    SET "done" = TRUE
+    WHERE "id" = $1;
+    `;
+  
+    let sqlValues = [listToUpdate];
+  
+  pool.query(sqlText, sqlValues)
+  .then(results => {
+    res.sendStatus(200);
+  }).catch(err => {
+    res.sendStatus(500);
+  })
+  
+  }); // end of router.put
 
 
 // DELETE
