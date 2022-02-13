@@ -2,7 +2,7 @@ $(document).ready(readyNow)
 
 function readyNow() {
  console.log('hello');
- $('.grid-container').on('click', '#btn-submit', submitBtn);
+ $('.grid-container').on('click', '.btn-submit', submitBtn);
  $('#output').on('click', '.btn-delete', toDoListDelete);
 $('#output').on('click','.btn-done', toDoListDone);
 getToDoList();
@@ -90,7 +90,7 @@ function rendertoDoList(response) {
           <td>${response[i].to_do}</td>
           <td><button class="btn-done" data-id=${response[i].id}>DONE</button></td>
           <td><button class="btn-delete" data-id=${response[i].id}>DELETE</button></td>
-          <td><input placeholder="wack"></td>
+          <td>Notes: <input placeholder="wack"></td>
           </tr>
         `) // <td>${response[i].notes}</td>
       } // end of for loop
