@@ -55,7 +55,6 @@ h1 {
 
 p {
  position: fixed;
- rotate: 90deg;
   color: #daff07;
   font-size: 30px;
   letter-spacing: 20px;
@@ -221,5 +220,13 @@ h4 {
   
 }
 
+
+#sleeping {
+  height: 150px;
+  -webkit-transform:rotate(90deg);
+  position: absolute;
+  margin-top: -75px;
+  margin-left: 30px;
+}
 
 

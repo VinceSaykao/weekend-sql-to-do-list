@@ -5,8 +5,8 @@ function readyNow() {
  $('.grid-container').on('click', '.btn-submit', submitBtn);
  $('#output').on('click', '.btn-delete', toDoListDelete);
 $('#output').on('click','.btn-done', toDoListDone);
-getToDoList()
 $('#output').on('click','.enter-notes',enterNotesDo);
+getToDoList();
 };
 
 
@@ -45,6 +45,7 @@ function submitBtn() {
 
 
 function toDoListDone() {
+
   console.log('done');
       let marked = $(this).text();
       let id = $(this).closest('tr').data().id
@@ -59,6 +60,7 @@ function toDoListDone() {
       }).catch(function(err) {
         console.log(err);
       })
+      getToDoList()
     }; // end of function
 
 
@@ -75,10 +77,7 @@ function postToDoList(toDo) {
         data: toDo
       }).then(function(response){
         console.log('Response from server', response);
-  
         getToDoList();
-        
-
       }).catch(function(error){
         console.log('Error in POST', error);
       })
@@ -90,7 +89,6 @@ function postToDoList(toDo) {
 
 
 function rendertoDoList(response) {
-
     console.log('List has been rendered');
     for (let i = 0; i < response.length; i += 1) {
       if (response[i].done === false) {
@@ -108,8 +106,8 @@ function rendertoDoList(response) {
       } else if (response[i].done === true) {
         $('#output').append(`
         <tr data-id=${response[i].id}>
-          <td><h4>${response[i].to_do}</h4></td>
-          <td><img src="sleeping.png" class="btn-done" data-id=${response[i].id}></td>
+          <td><strike><h4>${response[i].to_do}</h4></strike></td>
+          <td><img src="sleepy.png" id="sleeping" class="btn-done" data-id=${response[i].id}></td>
           <td><img src="trash.png" class="btn-delete" data-id=${response[i].id}></td>
           <td id="text-area"><textarea class="note-input" rows = "5" cols = "" name = "description">
           Write Something...
@@ -120,8 +118,7 @@ function rendertoDoList(response) {
       } else {
         return;
       }
- 
-
+    
     } // end of loop
 
       
@@ -129,7 +126,6 @@ function rendertoDoList(response) {
 
 function toDoListDelete() {
     console.log('deleted');
-    
     let doId = $(this).closest('tr').data().id;
 $.ajax({
     method: 'DELETE',
@@ -140,7 +136,6 @@ $.ajax({
     console.log('Error Deleteing', error);
 })
 getToDoList();
-
 }; // end of function 
 
 function enterNotesDo() {
