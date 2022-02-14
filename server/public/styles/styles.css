@@ -1,158 +1,37 @@
 body {
-    background-image:linear-gradient(#3a6186,#89253e)
+    /* background-image:linear-gradient(#3a6186,#89253e) */
+    background: url(../chill.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   
    
 }
-/*(180deg,white,rgb(255, 251, 0), rgb(3, 161, 16),rgb(9, 104, 45),rgb(6, 99, 161),rgb(136, 7, 153),rgb(97, 4, 4),rgb(56, 3, 43),rgb(0, 0, 0),black);
-*/
-/*
 
-.grid-container {
-  display: grid;
-  grid-template-columns: 200px 250px;
-  grid-auto-rows: minmax(225px,auto);
-  grid-column-gap: 20px;
-  grid-row-gap: 20px;
-  background-color: rgba(29, 28, 28, 0.267);
-  z-index: 1;
-  grid-template-areas:
-  "header header"
-  "sidebar content"
-  "sidebar content"
-
-}
-
-
-
-
-.grid-item-1 {
-  grid-column: 1/5;
-  height: 50px;
-  width:50px;
-  background-color: rgb(253, 253, 252);
-  border-radius:100px;
-  box-shadow: 0px 0px 100px white,
-  0px 0px 20px rgb(62, 241, 227),
-  0px 0px 50px rgb(255, 137, 82),
-  0px 0px 20px white;
-  z-index: 1;
-  
-  
-}
-
-h1 {
-  justify-content: center;
-  color: white;
-  font-size: 100px;
-  text-shadow: -1px -1px 0 rgb(18, 195, 240), 
-  2px 1px 0 rgb(236, 74, 74), 
-  1px 2px 0 rgb(240, 27, 27), 
-  3px 1px 0 rgb(5, 122, 255);
-  position: absolute;
-  border-radius: 10px;
-  z-index: 1;
-  
-
-}
-
-
-
-.grid-item-2 {
-  width: 1300px;
-  height: 340px;
-  margin-left: 50px;
-  margin-top: -180px;
-  z-index: -1;
-  border-radius: 30px;
-  border: 5px solid white;
-}
-
-span {
-  color: rgb(5, 171, 236);
-  text-shadow: 3px -1px 0 rgb(247, 80, 3), 
-  2px 1px 0 rgb(236, 74, 74), 
-  3px 2px 0 rgb(206, 10, 10), 
-  3px 1px 0 rgb(247, 52, 3);
-}
-
-.grid-item-3 {
-  width: 1000px;
-  height: 100px;
-  border-radius: 100px;
-  z-index: 1;
-
-  
-
-} 
 
 #input {
+  background-color: transparent;
+  height: 100px;
   position: fixed;
-  margin-top: 10px;
-  margin-left: 140px;
   text-align: center;
   font-size: 50px;
-  color:white;
-  letter-spacing: 50px;
-  text-shadow: 3px -1px 0 rgb(230, 247, 3), 
-  2px 1px 0 rgb(236, 74, 74), 
-  3px 2px 0 rgb(206, 10, 10), 
-  3px 1px 0 rgb(230, 247, 3);
-  background: black;
-  border-radius: 20px;
-  height: 100px;
-  width: 1100px;
-  border: 5px solid white;
-  z-index: 1;
-}
-
-h3 {
-  letter-spacing: 50px;
-  text-shadow: 3px -1px 0 rgb(230, 247, 3), 
-  2px 1px 0 rgb(236, 74, 74), 
-  3px 2px 0 rgb(206, 10, 10), 
-  3px 1px 0 rgb(230, 247, 3);
-  background: black;
-  border-radius: 20px;
-  z-index: 1;
-
-}
-
-*/
-
-
-
-
-
-/* .grid-item-5 {
-  /* border-radius: 80px;
-  height: 10px;
-  box-shadow: 0px 0px 100px white,
-  0px 0px 20px rgb(62, 241, 227),
-  0px 0px 50px rgb(255, 137, 82),
-  0px 0px 20px white;
-  background-color: rgb(0, 211, 248); */
-
-
-#input {
-  height: 800px;
-  position: fixed;
-  text-align: center;
-  font-size: 100px;
-  color:white;
   letter-spacing: 30px;
-  text-shadow: 3px -1px 0 rgb(230, 247, 3), 
-  2px 1px 0 rgb(236, 74, 74), 
-  3px 2px 0 rgb(206, 10, 10), 
-  3px 1px 0 rgb(230, 247, 3);
-  background: black;
   border-radius: 20px;
   width: 550px;
-  border: 3px solid white;
+  border: transparent;
   display: block;
   z-index: 1;
-  margin-top: 148px;
+  margin-top: 250px;
   margin-left: 670px;
+  color: white;
+  text-shadow: 2px 3px 5px rgba(0,0,0,0.5);
+  
+}
 
+  
+  ::placeholder {
+    color: white;
   }
 
 h1 {
@@ -164,9 +43,9 @@ h1 {
   z-index: 0;
   margin-top: 10px;
   font-family: 'Russo One', sans-serif;
-  text-shadow: 0 0 10px #03bcf4,
-               0 0 20px #03bcf4,
-               0 0 160px #000000;
+
+  text-shadow: 3px 3px 20px #ff99cc,
+    -2px 1px 30px #ff99cc;
   
 }
 
@@ -189,10 +68,14 @@ p {
 
 
 .btn-done, .btn-delete {
-  background-color: green;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
  }
 .btn-delete {
-  margin-right: 30px;
+  height: 100px;
+  width: 100px;
 
 }
 
@@ -206,7 +89,6 @@ tr {
 }
 
 th,td {
-  border: 2px solid white;
 }
 th {
   font-size: 30px;
@@ -217,27 +99,29 @@ th {
 
 
 .btn-submit {
-  margin-left: 613px;
-  margin-top: 150px;
+  margin-left: 860px;
+  margin-top: 735px;
   z-index: 1;
-  background-color:black;
+  background-color:transparent;
   color:white;
   width: 100px;
   height: 70px;
   border-radius: 10px;
   position: absolute;
   position: fixed;
-border: 10px solid white;
- 
-  box-shadow: 0 0 10px #03bcf4,
-               0 0 20px #03bcf4,
-               0 0 40px #03bcf4,
-               0 0 80px #03bcf4,
-               0 0 160px #03bcf4;
+  text-shadow: 2px 3px 5px rgba(0,0,0,0.5);
+border: 5px solid white;
+
+box-shadow: 0 0 10px #03bcf4,
+          0 0 20px #03bcf4,
+          0 0 40px #03bcf4,
+          0 0 80px #03bcf4,
+          0 0 160px #03bcf4;
 }
 
 .note-input {
-  background-color: green;
+  background-color: rgb(22, 22, 22);
+  color: white;
 }
 
 .enter-notes {
@@ -271,7 +155,6 @@ border: 10px solid white;
 }
 
 .grid-item-3 {
-  background-color: rgb(34, 33, 33);
   grid-column: 2/6;
   grid-row: 2/6;
   border: 5px solid white;
@@ -291,4 +174,14 @@ border: 10px solid white;
 .btnChange {
   background-color: red;
 }
+
+#study-girl {
+  height: 1500px;
+  width: 1000px;
+  position: fixed;
+  margin-bottom: 2000px;
+  margin-top: -1700px;
+  margin-left: 800px;
+}
+
 

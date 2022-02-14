@@ -14,7 +14,7 @@ $('#output').on('click','.enter-notes',enterNotesDo);
 
 function enterNotesDo() {
   $('#output').append(`<tr><td>nicee</td></tr>`);
-  let marked = $('.note-input').val();
+  let marked = $('.note-input').val().toLowerCase();
   console.log('clicked');
   console.log(marked)
   let id = $(this).closest('tr').data().id;
@@ -26,6 +26,7 @@ function enterNotesDo() {
       marked: marked
     }
   }).then(function(response) {
+    getToDoList();
   }).catch(function(err) {
     console.log(err);
   })
@@ -117,7 +118,8 @@ function rendertoDoList(response) {
         <tr data-id=${response[i].id}>
           <td>${response[i].to_do}</td>
           <td><button class="btn-done" data-id=${response[i].id}>DONE</button></td>
-          <td><button class="btn-delete" data-id=${response[i].id}>DELETE</button></td>
+         
+          <td><img src="trash.png" class="btn-delete" data-id=${response[i].id}></td>
           <td id="text-area"><textarea class="note-input" rows = "5" cols = "" name = "description">
           Write Something...
        </textarea><button class="enter-notes">Enter Notes</button>
