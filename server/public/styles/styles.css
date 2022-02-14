@@ -26,6 +26,8 @@ body {
   margin-left: 670px;
   color: white;
   text-shadow: 2px 3px 5px rgba(0,0,0,0.5);
+  font-family: 'Cute Font', cursive;
+  outline: none;
   
 }
 
@@ -45,7 +47,8 @@ h1 {
   font-family: 'Russo One', sans-serif;
 
   text-shadow: 3px 3px 20px #ff99cc,
-    -2px 1px 30px #ff99cc;
+    -2px 1px 30px #ff99cc,
+    2px 3px 5px rgba(0,0,0,0.5);
   
 }
 
@@ -62,20 +65,28 @@ p {
    -webkit-transform:rotate(-90deg);
    z-index: 2;
    font-family: 'Russo One', sans-serif;
+   text-shadow: 2px 3px 5px rgba(0,0,0,0.5);
 
 
 }
 
 
 .btn-done, .btn-delete {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+
+ }
+
+ .btn-done {
+  margin-top: -58px;
+  margin-left: 20px;
+   height: 135px;
+   width: 90px;
+   position:absolute;
 
  }
 .btn-delete {
   height: 100px;
   width: 100px;
+  margin-left: 30px;
 
 }
 
@@ -89,6 +100,7 @@ tr {
 }
 
 th,td {
+  text-shadow: 2px 3px 5px rgba(0,0,0,0.5);
 }
 th {
   font-size: 30px;
@@ -106,7 +118,7 @@ th {
   color:white;
   width: 100px;
   height: 70px;
-  border-radius: 10px;
+  border-radius: 50px;
   position: absolute;
   position: fixed;
   text-shadow: 2px 3px 5px rgba(0,0,0,0.5);
@@ -166,6 +178,15 @@ box-shadow: 0 0 10px #03bcf4,
 
 }
 
+h4 {
+  color: white;
+  text-align: center;
+  font-size: 50px;
+  position: relative;
+  text-shadow: 2px 3px 5px rgba(0,0,0,0.5);
+  font-family: 'Cute Font', cursive;
+}
+
 
 
 
@@ -182,6 +203,20 @@ box-shadow: 0 0 10px #03bcf4,
   margin-bottom: 2000px;
   margin-top: -1700px;
   margin-left: 800px;
+  z-index: -1;
+}
+
+#think {
+  height: 1000px;
+  width: 1000px;
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  position: fixed;
+  margin-left: 600px;
+  margin-top: -1550px;
+  z-index: -1;
+
+  
 }
 
 

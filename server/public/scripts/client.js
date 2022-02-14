@@ -71,6 +71,7 @@ function submitBtn() {
 
 function toDoListDone() {
   console.log('done');
+  $(this).remove();
       let marked = $(this).text();
       let id = $(this).closest('tr').data().id
       console.log(id, marked);
@@ -81,7 +82,7 @@ function toDoListDone() {
           marked: marked
         }
       }).then(function(response) {
-          getToDoList();
+        
       }).catch(function(err) {
         console.log(err);
       })
@@ -116,9 +117,8 @@ function rendertoDoList(response) {
     for (let i = 0; i < response.length; i += 1) {
         $('#output').append(`
         <tr data-id=${response[i].id}>
-          <td>${response[i].to_do}</td>
-          <td><button class="btn-done" data-id=${response[i].id}>DONE</button></td>
-         
+          <td><h4>${response[i].to_do}</h4></td>
+          <td><img src="large.png" class="btn-done" data-id=${response[i].id}></td>
           <td><img src="trash.png" class="btn-delete" data-id=${response[i].id}></td>
           <td id="text-area"><textarea class="note-input" rows = "5" cols = "" name = "description">
           Write Something...
