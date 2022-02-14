@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const doListRouter = require('./routes/doList.router')
+const notesRouter = require('./routes/notes.router')
 
 const app = express();
 
@@ -9,7 +10,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 // ROUTES
-app.use('/toDoList', doListRouter)
+app.use('/toDoList', doListRouter);
+app.use('/notes', notesRouter);
 
 // Serve "static assets" (html, css, client-side js)
 // from the server/public folder

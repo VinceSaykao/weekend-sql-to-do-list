@@ -10,26 +10,40 @@ $('#output').on('click','.enter-notes',enterNotesDo);
 
 };
 
+
+
 function enterNotesDo() {
-  noob = $('.note-input').val();
+  $('#output').append(`<tr><td>nicee</td></tr>`);
+  let marked = $('.note-input').val();
   console.log('clicked');
-  console.log(noob)
-  let marked = noob;
-  let id = $(this).closest('tr').data().id
+  console.log(marked)
+  let id = $(this).closest('tr').data().id;
   console.log(id, marked);
   $.ajax({
     method: 'PUT',
-    url: `/toDoList/${id}`,
+    url: `/notes/${id}`,
     data: {
       marked: marked
     }
   }).then(function(response) {
-      getToDoList();
   }).catch(function(err) {
     console.log(err);
   })
 
+}; // end of function
 
+function getToDoList() {
+  console.log( 'in toDoList');
+  $('#output').empty();
+$.ajax({
+  method: 'GET',
+  url: "/toDoList"
+}).then(function(response){
+  console.log('response', response);
+  rendertoDoList(response); // calls rendertoDoList
+}).catch (function(error){
+  console.log('Lmao, that sucks...')
+})
 
 }; // end of function
 
@@ -58,7 +72,6 @@ function toDoListDone() {
   console.log('done');
       let marked = $(this).text();
       let id = $(this).closest('tr').data().id
-      $(this).css("background-color","yellow");
       console.log(id, marked);
       $.ajax({
         method: 'PUT',
@@ -73,20 +86,8 @@ function toDoListDone() {
       })
     }; // end of function
 
-    function getToDoList() {
-      console.log( 'in toDoList');
-      $('#output').empty();
-    $.ajax({
-      method: 'GET',
-      url: "/toDoList"
-    }).then(function(response){
-      console.log('response', response);
-      rendertoDoList(response); // calls rendertoDoList
-    }).catch (function(error){
-      console.log('Lmao, that sucks...')
-    })
-    
-    }; // end of function
+
+
     
 
 
@@ -124,6 +125,7 @@ function rendertoDoList(response) {
           </tr>
         `) // <td>${response[i].notes}</td>
       } // end of for loop
+      
     }; // end of function
 
 function toDoListDelete() {
