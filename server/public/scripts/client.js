@@ -7,31 +7,11 @@ function readyNow() {
 $('#output').on('click','.btn-done', toDoListDone);
 getToDoList()
 $('#output').on('click','.enter-notes',enterNotesDo);
-
 };
 
 
 
-function enterNotesDo() {
-  $('#output').append(`<tr><td>nicee</td></tr>`);
-  let marked = $('.note-input').val().toLowerCase();
-  console.log('clicked');
-  console.log(marked)
-  let id = $(this).closest('tr').data().id;
-  console.log(id, marked);
-  $.ajax({
-    method: 'PUT',
-    url: `/notes/${id}`,
-    data: {
-      marked: marked
-    }
-  }).then(function(response) {
-    getToDoList();
-  }).catch(function(err) {
-    console.log(err);
-  })
 
-}; // end of function
 
 function getToDoList() {
   console.log( 'in toDoList');
@@ -52,13 +32,8 @@ $.ajax({
 function submitBtn() {
   console.log('clicked');
   // postToDoList
-  
- 
-  
-  
   let toDo = {
       to_do: $('#input').val(),
-
       //notes: $('#notes').val()
   }
   postToDoList(toDo);
@@ -71,7 +46,6 @@ function submitBtn() {
 
 function toDoListDone() {
   console.log('done');
-  $(this).remove();
       let marked = $(this).text();
       let id = $(this).closest('tr').data().id
       console.log(id, marked);
@@ -82,7 +56,6 @@ function toDoListDone() {
           marked: marked
         }
       }).then(function(response) {
-        
       }).catch(function(err) {
         console.log(err);
       })
@@ -102,19 +75,25 @@ function postToDoList(toDo) {
         data: toDo
       }).then(function(response){
         console.log('Response from server', response);
-        
+  
         getToDoList();
+        
 
       }).catch(function(error){
         console.log('Error in POST', error);
       })
     }; // end of function
+  
+    
+
 
 
 
 function rendertoDoList(response) {
+
     console.log('List has been rendered');
     for (let i = 0; i < response.length; i += 1) {
+      if (response[i].done === false) {
         $('#output').append(`
         <tr data-id=${response[i].id}>
           <td><h4>${response[i].to_do}</h4></td>
@@ -125,13 +104,32 @@ function rendertoDoList(response) {
        </textarea><button class="enter-notes">Enter Notes</button>
           </td>
           </tr>
-        `) // <td>${response[i].notes}</td>
-      } // end of for loop
+        `)
+      } else if (response[i].done === true) {
+        $('#output').append(`
+        <tr data-id=${response[i].id}>
+          <td><h4>${response[i].to_do}</h4></td>
+          <td><img src="sleeping.png" class="btn-done" data-id=${response[i].id}></td>
+          <td><img src="trash.png" class="btn-delete" data-id=${response[i].id}></td>
+          <td id="text-area"><textarea class="note-input" rows = "5" cols = "" name = "description">
+          Write Something...
+       </textarea><button class="enter-notes">Enter Notes</button>
+          </td>
+          </tr>
+        `)
+      } else {
+        return;
+      }
+ 
+
+    } // end of loop
+
       
     }; // end of function
 
 function toDoListDelete() {
     console.log('deleted');
+    
     let doId = $(this).closest('tr').data().id;
 $.ajax({
     method: 'DELETE',
@@ -144,6 +142,26 @@ $.ajax({
 getToDoList();
 
 }; // end of function 
+
+function enterNotesDo() {
+  let marked = $('.note-input').val().toLowerCase();
+  console.log('clicked');
+  console.log(marked)
+  let id = $(this).closest('tr').data().id;
+  console.log(id, marked);
+  $.ajax({
+    method: 'PUT',
+    url: `/notes/${id}`,
+    data: {
+      marked: marked
+    }
+  }).then(function(response) {
+    getToDoList();
+  }).catch(function(err) {
+    console.log(err);
+  })
+
+}; // end of function
     
 
 

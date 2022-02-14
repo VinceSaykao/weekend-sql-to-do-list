@@ -138,7 +138,9 @@ box-shadow: 0 0 10px #03bcf4,
 
 .enter-notes {
   width: 182px;
-  color:green;
+  color:greenyellow;
+  background-color: transparent;
+  border: none;
 
   
 }
@@ -218,5 +220,6 @@ h4 {
 
   
 }
+
 
 
